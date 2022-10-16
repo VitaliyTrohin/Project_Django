@@ -88,3 +88,9 @@ fabric.properties
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+.idea
+env
+.vscode
+__pycache__
+*.pyc
