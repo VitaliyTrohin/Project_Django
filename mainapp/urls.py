@@ -1,5 +1,7 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from mainapp import views
-from django.urls import path
+from django.urls import path, include
 from mainapp.apps import MainappConfig
 
 app_name = MainappConfig.name
@@ -13,3 +15,7 @@ urlpatterns = [
     path('news/', views.NewsView.as_view(), name='news'),
     path('news/<pk>/', views.NewsDetail.as_view(), name='news_detail'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
