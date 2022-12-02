@@ -1,4 +1,8 @@
 {% extends 'mainapp/base.html' %}
+{% load static crispy_forms_tags %}
+{% block title %}
+{{ course_object.name }}
+{% endblock title %}
 
 {% block content %}
 
@@ -83,8 +87,19 @@
                 </a>
                 </div>
 
+                {% for item in object_list %}
+                <div class="card col-sm-12 col-md-6 col-lg-4 border-0">
+                    <a href="{% url 'mainapp:courses_detail' pk=item.pk %}">
+                        <img src="{% static item.cover %}" class="card-img-top" alt="photo">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ item.title }}</h5>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
         
     </div>
+
     <div class="row justify-content-center align-items-center mt-3 mb-n3">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
